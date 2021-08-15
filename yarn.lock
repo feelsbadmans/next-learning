@@ -45,6 +45,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.12.1":
+  version "7.15.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.3.tgz#2e1c2880ca118e5b2f9988322bd8a7656a32502b"
+  integrity sha512-OvwMLqNXkCXSz1kSm58sEsNuhqOx/fKpnUnKnFB5v8uDda5bLNEHNgKPvhDN6IU0LDcnHQ90LlJ0Q6jnyBSIBA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/types@7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.8.3.tgz#5a383dffa5416db1b73dedffd311ffd0788fb31c"
@@ -53,6 +60,11 @@
     esutils "^2.0.2"
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
+
+"@bem-react/classname@^1.5.11":
+  version "1.5.11"
+  resolved "https://registry.yarnpkg.com/@bem-react/classname/-/classname-1.5.11.tgz#5c13415e3318989bba848b69163a871eaa2b33ad"
+  integrity sha512-+fm/VojaS1VFAGOPs4E+/ayMTt7fUBrlFrEEP/xXKk8J/BB2F1fb/s3E2ep1Cw2//pceaH/qn7D/XAHdLeXIcg==
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
@@ -2479,6 +2491,13 @@ react-dom@17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     scheduler "^0.20.2"
+
+react-final-form@^6.5.3:
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-6.5.3.tgz#b60955837fe9d777456ae9d9c48e3e2f21547d29"
+  integrity sha512-FCs6GC0AMWJl2p6YX7kM+a0AvuSLAZUgbVNtRBskOs4g984t/It0qGtx51O+9vgqnqk6JyoxmIzxKMq+7ch/vg==
+  dependencies:
+    "@babel/runtime" "^7.12.1"
 
 react-is@17.0.2:
   version "17.0.2"
