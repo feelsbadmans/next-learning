@@ -10,12 +10,20 @@
   },
   "dependencies": {
     "@bem-react/classname": "^1.5.11",
+    "@reduxjs/toolkit": "1.5.0",
     "final-form": "^4.20.2",
+    "axios": "0.21.1",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-final-form": "^6.5.3",
-    "sass": "^1.37.5"
+    "sass": "^1.37.5",
+    "react-redux": "^7.2.2",
+    "react-scripts": "4.0.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-observable": "^1.2.0",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@types/react": "17.0.16",
