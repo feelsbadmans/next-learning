@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Open+Sans&display=swap');
+
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Comfortaa';
 }
 
 a {
@@ -13,4 +15,31 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: inherit;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url('../assets/images/background.jpg');
+
+  h1 {
+    font-size: 52px;
+    color: #0a1812;
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
 }
