@@ -1,0 +1,72 @@
+.homeIcon {
+    position: absolute;
+
+    top: 32px;
+    left: 32px;
+
+    height: 24px; 
+    width: 28px;
+    
+    &:hover {
+        cursor: pointer;
+    } 
+
+    @media screen and (max-width: 1024px) {
+        top: 24px;
+        left: 24px;
+    }
+}
+
+.forecastWrapper {
+    width: 40%;
+    height: 80%;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 12px 20px;
+
+    border-radius: 16px;
+
+    background: rgba(255, 232, 250, 0.95);
+
+    @media screen and (max-width: 1440px) {
+        width: 50%;
+    }
+
+    @media screen and (max-width: 1024px) {
+        width: 60%;
+        padding: 24px;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 80%;
+    }
+} 
+
+.skeleton {
+    background: linear-gradient(
+        rgba(255, 179, 198, 0.9), 
+        rgba(255, 180, 249, 0.8), 
+        rgba(190, 200, 255, 0.8), 
+        rgba(199, 248, 255, 0.75), 
+        rgba(223, 255, 211, 0.7),
+        rgba(255, 211, 191, 0.8),  
+        rgba(255, 179, 198, 0.9), 
+    );
+    background-position: 0 0;
+    animation: background 1.5s infinite alternate;
+}
+
+@keyframes background {
+    100% {
+        background-position: 0px 100px;
+    }
+}
+
+.bob {
+    background: linear-gradient(rgba(255, 232, 232, 0.95), rgba(255, 232, 250, 0.95), rgba(250, 232, 255, 0.95), rgba(232, 239, 255, 0.95));
+}
