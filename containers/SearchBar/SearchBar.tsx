@@ -1,14 +1,14 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { Form } from "react-final-form";
-import { cn } from "@bem-react/classname";
+import cnBind, { Argument } from 'classnames/bind';
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import SearchField from "../../components/SearchField/SearchField";
 
-import style from "../../styles/SearchBar.module.scss";
+import styles from "../../styles/SearchBar.module.scss";
 
-const cnSearchBar = cn(style.searchBar);
+const cx = cnBind.bind(styles) as (...args: Argument[]) => string;
 
 const SearchBar = () => {
     const router = useRouter();
@@ -34,7 +34,7 @@ const SearchBar = () => {
     return (
         <Form onSubmit={() => undefined} validateOnBlur>
             {({ handleSubmit }) => (
-                <form onSubmit={handleSubmit} className={cnSearchBar()}>
+                <form onSubmit={handleSubmit} className={cx('search-bar')}>
                     <SearchField
                         onChangeCity={setCity}
                         onKeyPress={onEnterPress}

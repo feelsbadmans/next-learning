@@ -18,12 +18,15 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/SearchField/SearchField.js",
-    "components/SearchField/SearchField.js",
-    "containers/SearchBar/SearchBar.js",
+    "components/SearchField/SearchField.tsxxx",
+    "components/SearchField/SearchField.tsxxx",
+    "containers/SearchBar/SearchBar.tsx",
     "pages/city.js",
-    "pages/index.js",
-    "pages/_app.js"
+    "pages/index.tsxx",
+    "pages/_app.tsxx",
+    "containers/Background/Background.js",
+    "pages/404.js",
+    "pages/[city].js"
   ],
   "exclude": ["node_modules"]
 }

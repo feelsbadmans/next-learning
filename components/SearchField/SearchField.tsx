@@ -1,22 +1,26 @@
 import React from "react";
 import { Field, FormSpy } from "react-final-form";
-import { cn } from "@bem-react/classname";
+import cnBind, { Argument } from 'classnames/bind';
 
-import style from "../../styles/SearchField.module.scss";
+import styles from "../../styles/SearchField.module.scss";
 
-const cnSearchField = cn(style.searchField);
-const cnNotValid = cn(style.notValid);
+const cx = cnBind.bind(styles) as (...args: Argument[]) => string;
 
-const validate = (value) => (value ? undefined : "error");
+interface ISearchFieldProps {
+    onChangeCity: (value: string) => void;
+    onKeyPress: (value: React.KeyboardEvent) => void;
+}
 
-const SearchField = ({ onChangeCity, onKeyPress }) => {
+const validate = (value: string) => (value ? undefined : "error");
+
+const SearchField: React.FC<ISearchFieldProps> = ({ onChangeCity = () => undefined, onKeyPress }) => {
     return (
         <>
             <Field name="city" validate={validate}>
                 {({ input, meta }) => (
                     <input
                         placeholder="Type city name here"
-                        className={cnSearchField() + `${Boolean(meta.error) && meta.touched && !input.value ? ` ${cnNotValid()}` : ""}`}
+                        className={cx('search-field', {'not-valid': Boolean(meta.error) && meta.touched && !input.value })}
                         {...input}
                         type="text"
                         autoComplete="off"
