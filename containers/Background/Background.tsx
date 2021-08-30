@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import bgImage from "../../assets/images/background.jpg";
+import bgImage from "../../public/assets/images/background.jpg";
 
 const Background: React.FC = ({ children }) => {
     return (
@@ -12,3 +12,5 @@ const Background: React.FC = ({ children }) => {
 };
 
 export default Background;
+
+

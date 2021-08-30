@@ -10,7 +10,6 @@ const Index = () => {
                 <meta name="keywords" content={metaSeoYesss} />
             </Head>
             <div className="searchBarWrapper">
-                
                 <h1>Weather Forecast</h1>
                 <SearchBar />
             </div>

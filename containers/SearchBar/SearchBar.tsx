@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 import SearchField from "../../components/SearchField/SearchField";
 
-import styles from "../../styles/SearchBar.module.scss";
+import styles from "./SearchBar.module.scss";
 
 const cx = cnBind.bind(styles) as (...args: Argument[]) => string;
 

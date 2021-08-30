@@ -1,24 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import Head from 'next/head';
-import { useMemo, useState } from "react";
-import { store, useAppSelector } from "../store/store";
-import homeIcon from "../assets/icons/home.png";
+import { useMemo } from "react";
+import { wrapper } from "../store/store";
+import homeIcon from "../public/assets/icons/home.png";
 import style from "../styles/City.module.scss";
 import { capitalizeFirstLetter } from "../utils/stringFunctions";
 import { getWeatherForecastAction } from "../store/actions/weather";
 import { FetchStatus } from "../types/api";
-import { GetServerSideProps } from "next";
 
 const Loader = () => <div className={style.forecastWrapper + " " + style.skeleton} />;
 
 const City = ({ city = "", current = {}, forecast = {}, fetchStatus = FetchStatus.INITIAL }) => {
 
-    //This is for gradient...
-    const [loaderShow, setLoaderShow] = useState(true);
-
     const renderComponent = useMemo(() => {
-        if (fetchStatus === FetchStatus.FETCHED && !loaderShow) {
+        if (fetchStatus === FetchStatus.FETCHED) {
             return (
                 <div className={style.forecastWrapper}>
                     <div className={style.homeIcon}>
@@ -30,7 +26,7 @@ const City = ({ city = "", current = {}, forecast = {}, fetchStatus = FetchStatu
                 </div>
             );
         }
-        if (fetchStatus === FetchStatus.ERROR && !loaderShow) {
+        if (fetchStatus === FetchStatus.ERROR) {
             return (
                 <div className={style.forecastWrapper}>
                     <div className={style.homeIcon}>
@@ -43,11 +39,7 @@ const City = ({ city = "", current = {}, forecast = {}, fetchStatus = FetchStatu
                 </div>
             );
         }
-        setTimeout(() => {
-            setLoaderShow(false);
-        }, 4000);
-        return <Loader />;
-    }, [fetchStatus, city, loaderShow]);
+    }, [fetchStatus, city]);
 
     return (
     <>
@@ -60,7 +52,7 @@ const City = ({ city = "", current = {}, forecast = {}, fetchStatus = FetchStatu
 
 export default City;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
     let city = "";
 
     const cityTemp = context.query.city && Array.isArray(context.query.city) ? context.query.city[0] : context.query.city;
@@ -68,6 +60,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         city = capitalizeFirstLetter(cityTemp);
         await store.dispatch(getWeatherForecastAction(city));
     }
+    
     const state = store.getState().weather;
 
     return {
@@ -78,4 +71,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             fetchStatus: state.fetchStatus,
         },
     };
-};
+});

@@ -1,16 +1,33 @@
 import "../styles/globals.scss";
 import Background from "../containers/Background/Background";
-import { Provider } from "react-redux";
-import { store } from "../store/store";
 import { AppProps } from "next/dist/next-server/lib/router/router";
+import { wrapper } from "../store/store";
+import React, { useState } from "react";
+import Router from "next/router";
+import Loader from "../components/Loader/Loader";
 
 // This default export is required in a new `pages/_app.js` file.
-export default function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
+    const [loaderShow, setLoaderShow] = useState(false);
+
+    Router.events.on('routeChangeStart', () => { 
+        setLoaderShow(true); 
+    });
+    Router.events.on('routeChangeComplete', () => { 
+        setTimeout(() => { setLoaderShow(false); }, 4000) 
+    });
+
     return (
-        <Provider store={store}>
-            <Background>
-                <Component {...pageProps} />
-            </Background>
-        </Provider>
+        <Background>
+            {
+                loaderShow ? (
+                    <Loader />
+                ) : (
+                    <Component {...pageProps} />
+                )
+            }
+        </Background>
     );
 }
+
+export default wrapper.withRedux(MyApp)

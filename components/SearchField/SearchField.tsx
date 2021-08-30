@@ -2,7 +2,7 @@ import React from "react";
 import { Field, FormSpy } from "react-final-form";
 import cnBind, { Argument } from 'classnames/bind';
 
-import styles from "../../styles/SearchField.module.scss";
+import styles from "./SearchField.module.scss";
 
 const cx = cnBind.bind(styles) as (...args: Argument[]) => string;
 
