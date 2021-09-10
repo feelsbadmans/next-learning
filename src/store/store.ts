@@ -1,7 +1,8 @@
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { weatherReducer as weather } from './reducers/weather';
 import { createWrapper } from 'next-redux-wrapper';
+
+import { weatherReducer as weather } from './reducers/weather';
 
 const reducer = combineReducers({
     weather

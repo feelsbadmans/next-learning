@@ -56,7 +56,7 @@ a {
   flex-direction: row;
 }
 
-.searchBarWrapper {
+.search-bar-wrapper {
   width: 50%;
   height: 28%;
 
@@ -72,6 +72,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 24px;
 
   
   @media screen and (max-width: 768px) {

@@ -1,52 +1,35 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { Form } from "react-final-form";
-import cnBind, { Argument } from "classnames/bind";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React, { useCallback, useState } from 'react';
+import { Form } from 'react-final-form';
+import cnBind, { Argument } from 'classnames/bind';
+import { useRouter } from 'next/router';
 
-import SearchField from "../../components/SearchField/SearchField";
+import { SearchField } from 'components/SearchField';
 
-import styles from "./SearchBar.module.scss";
+import styles from './SearchBar.module.scss';
 
 const cx = cnBind.bind(styles) as (...args: Argument[]) => string;
 
-const SearchBar = () => {
+export const SearchBar: React.FC = () => {
     const router = useRouter();
 
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState('');
 
-    const url = useMemo(() => {
+    const onFindClick = useCallback(() => {
         if (city) {
-            return `/${city}`;
+            void router.push(city);
         }
-        return "";
-    }, [city]);
-
-    const onEnterPress = useCallback(
-        (button) => {
-            if (button.key.toLowerCase() === "enter" && city !== "") {
-                router.push(city);
-            }
-        },
-        [city, router]
-    );
+    }, [city, router]);
 
     return (
-        <Form onSubmit={() => undefined} validateOnBlur>
+        <Form onSubmit={onFindClick} validateOnBlur>
             {({ handleSubmit }) => (
-                <form onSubmit={handleSubmit} className={cx("search-bar")}>
-                    <SearchField onChangeCity={setCity} onKeyPress={onEnterPress} />
-                    {url !== "" ? (
-                        <Link href={url} passHref>
-                            Find
-                        </Link>
-                    ) : (
-                        <button type="submit">Find</button>
-                    )}
+                <form onSubmit={handleSubmit} className={cx('search-bar')}>
+                    <SearchField onChangeCity={setCity} />
+                    <button type="submit" onClick={onFindClick} className={cx('search-bar__button')}>
+                        Find
+                    </button>
                 </form>
             )}
         </Form>
     );
 };
-
-export default SearchBar;

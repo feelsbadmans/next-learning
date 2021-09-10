@@ -1,19 +1,20 @@
 import { createSlice, SliceCaseReducers } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
-import { ICurrentWeather, IForecast } from "../../pages/api/weather";
-import { FetchStatus } from "../../types/api";
-import { getWeatherForecastAction } from "../actions/weather";
+import { getWeatherForecastAction } from "store/actions/weather";
+import { FetchStatus } from "types/api";
+import { ICurrentWeather, IForecast } from "types/weather";
+
 
 export interface WeatherState {
-    current: ICurrentWeather | undefined;
-    forecast: IForecast | undefined;
+    current: ICurrentWeather | null;
+    forecast: IForecast | null;
     fetchStatus: FetchStatus;
     error: unknown;
 }
 
 const initialState : WeatherState = {
-    current: undefined,
-    forecast: undefined,
+    current: null,
+    forecast: null,
     fetchStatus: FetchStatus.INITIAL,
     error: null,
 }

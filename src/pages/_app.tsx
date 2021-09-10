@@ -1,33 +1,36 @@
-import "../styles/globals.scss";
-import Background from "../containers/Background/Background";
-import { AppProps } from "next/dist/next-server/lib/router/router";
-import { wrapper } from "../store/store";
-import React, { useState } from "react";
-import Router from "next/router";
-import Loader from "../components/Loader/Loader";
+import React, { useState } from 'react';
+import { Background } from 'containers/Background/Background';
+import { AppProps } from 'next/dist/next-server/lib/router/router';
+import Head from 'next/head';
+import Router from 'next/router';
+import { wrapper } from 'store/store';
+
+import { Loader } from 'components/Loader';
+
+import 'styles/globals.scss';
 
 // This default export is required in a new `pages/_app.js` file.
 const MyApp = ({ Component, pageProps }: AppProps) => {
     const [loaderShow, setLoaderShow] = useState(false);
 
-    Router.events.on('routeChangeStart', () => { 
-        setLoaderShow(true); 
+    Router.events.on('routeChangeStart', () => {
+        setLoaderShow(true);
     });
-    Router.events.on('routeChangeComplete', () => { 
-        setTimeout(() => { setLoaderShow(false); }, 4000) 
+    Router.events.on('routeChangeComplete', () => {
+        const time = Router.pathname === '/' ? 2000 : 4000;
+        setTimeout(() => {
+            setLoaderShow(false);
+        }, time);
     });
 
     return (
-        <Background>
-            {
-                loaderShow ? (
-                    <Loader />
-                ) : (
-                    <Component {...pageProps} />
-                )
-            }
-        </Background>
+        <>
+            <Head>
+                <title>Weather Forecast</title>
+            </Head>
+            <Background>{loaderShow ? <Loader /> : <Component {...pageProps} />}</Background>
+        </>
     );
-}
+};
 
-export default wrapper.withRedux(MyApp)
+export default wrapper.withRedux(MyApp);
