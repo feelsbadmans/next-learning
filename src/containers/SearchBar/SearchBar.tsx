@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { Form } from "react-final-form";
-import cnBind, { Argument } from 'classnames/bind';
+import cnBind, { Argument } from "classnames/bind";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -34,11 +34,8 @@ const SearchBar = () => {
     return (
         <Form onSubmit={() => undefined} validateOnBlur>
             {({ handleSubmit }) => (
-                <form onSubmit={handleSubmit} className={cx('search-bar')}>
-                    <SearchField
-                        onChangeCity={setCity}
-                        onKeyPress={onEnterPress}
-                    />
+                <form onSubmit={handleSubmit} className={cx("search-bar")}>
+                    <SearchField onChangeCity={setCity} onKeyPress={onEnterPress} />
                     {url !== "" ? (
                         <Link href={url} passHref>
                             Find
