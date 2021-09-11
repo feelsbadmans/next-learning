@@ -43,6 +43,40 @@ export interface ICurrentWeather {
     };
 }
 
+export interface IForecastWeather {
+    clouds: {
+        all: number;
+    };
+    main: {
+        feels_like: number;
+        grnd_level: number;
+        humidity: number;
+        pressure: number;
+        sea_level: number;
+        temp: number;
+        temp_kf: number;
+        temp_max: number;
+        temp_min: number;
+    };
+    pop: number;
+    sys: {
+        pod: string;
+    };
+    visibility: number;
+    weather: {
+        description: string;
+        icon: string;
+        id: number;
+        main: string;
+    }[];
+    wind: {
+        deg: number;
+        gust: number;
+        speed: number;
+    };
+    dt_txt: string;
+}
+
 export interface IForecast {
     city: {
         coord: {
@@ -59,37 +93,6 @@ export interface IForecast {
     };
     cnt: number;
     cod: string;
-    list: {
-        clouds: {
-            all: number;
-        };
-        main: {
-            feels_like: number;
-            grnd_level: number;
-            humidity: number;
-            pressure: number;
-            sea_level: number;
-            temp: number;
-            temp_kf: number;
-            temp_max: number;
-            temp_min: number;
-        };
-        pop: number;
-        sys: {
-            pod: string;
-        };
-        visibility: number;
-        weather: {
-            description: string;
-            icon: string;
-            id: number;
-            main: string;
-        }[];
-        wind: {
-            deg: number;
-            gust: number;
-            speed: number;
-        };
-    }[];
+    list: IForecastWeather[];
     message: number;
 }

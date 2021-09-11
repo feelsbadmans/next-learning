@@ -1,8 +1,10 @@
 import React from 'react';
 import { Clouds, FewClouds, Fog, MoreClouds, MoreRain, Rain, Snow, Sunny, Thunderstorm } from 'assets';
 
-export const WeatherIcon: React.FC<{ code: string }> = ({ code }) => {
-    switch (code.slice(0, 2)) {
+import { IWeatherIconProps } from './types';
+
+export const WeatherIcon: React.FC<IWeatherIconProps> = ({ icon }) => {
+    switch (icon.slice(0, 2)) {
         case '01':
             return <Sunny />;
         case '02':

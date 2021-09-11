@@ -1,4 +1,4 @@
-export { default as homeIcon } from './icons/home.png';
+export { ReactComponent as Home } from './icons/home.svg';
 export { ReactComponent as Clouds } from './icons/wi-cloud.svg';
 export { ReactComponent as MoreClouds } from './icons/wi-cloudy.svg';
 export { ReactComponent as FewClouds } from './icons/wi-day-cloudy.svg';

@@ -2,6 +2,7 @@ import React from 'react';
 import cnBind, { Argument } from 'classnames/bind';
 
 import { CurrentWeather } from 'components/CurrentWeather';
+import { ForecastCard } from 'components/ForecastCard';
 
 import { IForecastProps } from './types';
 
@@ -18,7 +19,14 @@ export const Forecast: React.FC<IForecastProps> = ({ city, current, forecast }) 
                     <CurrentWeather current={current} />
                 </div>
             </div>
-            <div></div>
+            <div className={cx('forecast-cards')}>
+                <h3>Forecast for 12 hours</h3>
+                <div className={cx('forecast-cards-container')}>
+                    {forecast.list.map((value, index) => (
+                        <ForecastCard forecast={value} key={`ForecastCard${index}`} />
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };

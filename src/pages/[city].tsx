@@ -1,9 +1,8 @@
 import React, { useMemo } from 'react';
-import { homeIcon } from 'assets';
+import { Home } from 'assets';
 import cnBind, { Argument } from 'classnames/bind';
 import { Forecast } from 'containers/Forecast';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { getWeatherForecastAction } from 'store/actions/weather';
 import { wrapper } from 'store/store';
@@ -15,8 +14,6 @@ import { capitalizeFirstLetter } from 'utils/stringFunctions';
 import styles from 'styles/City.module.scss';
 
 const cx = cnBind.bind(styles) as (...args: Argument[]) => string;
-
-export const Loader: React.FC = () => <div className={cx('forecast-wrapper', 'skeleton')} />;
 
 const City = ({
     city = '',
@@ -30,7 +27,7 @@ const City = ({
         }
         if (fetchStatus === FetchStatus.ERROR) {
             return (
-                <div>
+                <div className={cx('error')}>
                     <h2>{`Couldn't find Weather Forecast in ${city}!`}</h2>
                     <h3>Please try again!</h3>
                 </div>
@@ -45,11 +42,9 @@ const City = ({
                 <title>Weather in {city}</title>
             </Head>
             <div className={cx('forecast-wrapper')}>
-                <div className={cx('home-icon')}>
-                    <Link href="/" passHref>
-                        <Image src={homeIcon} alt="Home" />
-                    </Link>
-                </div>
+                <Link href="/" passHref>
+                    <Home className={cx('home-icon')} />
+                </Link>
                 {renderComponent}
             </div>
         </>

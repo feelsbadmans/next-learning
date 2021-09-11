@@ -1,0 +1,50 @@
+.forecast-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 18%;
+    margin-top: 12px;
+
+    @media screen and (max-width: 500px) {
+        width: auto;
+    }
+}
+
+.card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: -12px;
+    width: 100%;
+
+    svg {
+        width: 44px;
+        height: 44px;
+
+        @media screen and (max-width: 500px) {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.temperature {
+    font-size: 16px;
+
+    @media screen and (max-width: 600px) {
+        font-size: 14px;
+    }
+}
+
+.time {
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+
+    @media screen and (max-width: 600px) {
+        font-size: 12px;
+    }
+}

@@ -3,9 +3,10 @@ import cnBind, { Argument } from 'classnames/bind';
 
 import { WeatherIcon } from 'components/WeatherIcon';
 import { capitalizeFirstLetter } from 'utils/stringFunctions';
+import { getSign } from 'utils/temperatureSign';
 
+import { atmToPas, pasToMM } from './constants';
 import { ICurrentWeatherProps } from './types';
-import { getSign } from './utils';
 
 import styles from './CurrentWeather.module.scss';
 
@@ -22,11 +23,12 @@ export const CurrentWeather: React.FC<ICurrentWeatherProps> = ({ current }) => {
         [current.main.feels_like],
     );
     const description = useMemo(() => capitalizeFirstLetter(current.weather[0].description), [current.weather]);
+    const pressure = useMemo(() => Math.floor((current.main.pressure / atmToPas) * pasToMM), [current.main.pressure]);
 
     return (
         <div className={cx('weather-block')}>
             <div className={cx('row', 'row-center')}>
-                <WeatherIcon code={icon} />
+                <WeatherIcon icon={icon} />
                 <div className={cx('col', 'col-center')}>
                     <span className={cx('temperature')}>{temperature}°C</span>
                     <span className={cx('feels-like')}>feels like {feelsLike}°C</span>
@@ -35,7 +37,7 @@ export const CurrentWeather: React.FC<ICurrentWeatherProps> = ({ current }) => {
             <div className={cx('col', 'col-start', 'detail')}>
                 <span className={cx('description')}>{description}</span>
                 <span>humidity {current.main.humidity}%</span>
-                <span>pressure {current.main.pressure}</span>
+                <span>pressure {pressure} mm Hg</span>
                 <span>wind {current.wind.speed} km/h</span>
             </div>
         </div>
