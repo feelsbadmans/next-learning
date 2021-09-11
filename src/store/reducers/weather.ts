@@ -1,4 +1,4 @@
-import { createSlice, SliceCaseReducers } from "@reduxjs/toolkit";
+import { AnyAction, createSlice, SliceCaseReducers } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { getWeatherForecastAction } from "store/actions/weather";
 import { FetchStatus } from "types/api";
@@ -26,12 +26,7 @@ const weatherSlice = createSlice<WeatherState, SliceCaseReducers<WeatherState>>(
         // standard reducer logic, with auto-generated action types per reducer
     },
     extraReducers: (builder) => {
-        builder.addCase(HYDRATE, (state, action) => {
-            state.fetchStatus = action.payload.weather.fetchStatus;
-            state.current = action.payload.weather.current || {};
-            state.forecast = action.payload.weather.forecast || {};
-            state.error = action.payload.weather.error;
-        })
+        builder.addCase(HYDRATE, (state, action: AnyAction) => ({...action.payload }))
         builder.addCase(getWeatherForecastAction.pending, (state) => {
             state.fetchStatus = FetchStatus.FETCHING;
             state.error = null;
