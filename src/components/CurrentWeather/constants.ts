@@ -1,2 +1,2 @@
-export const atmToPas = 1013;
-export const pasToMM = 760;
+export const ATM_TO_PAS = 1013;
+export const PAS_TO_MM = 760;

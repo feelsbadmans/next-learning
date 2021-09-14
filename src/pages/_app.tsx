@@ -17,7 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         setLoaderShow(true);
     });
     Router.events.on('routeChangeComplete', () => {
-        const time = Router.pathname === '/' ? 2000 : 4000;
+        const time = Router.pathname === '/' ? 2000 : 3000;
         setTimeout(() => {
             setLoaderShow(false);
         }, time);

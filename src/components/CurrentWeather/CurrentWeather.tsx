@@ -5,7 +5,7 @@ import { WeatherIcon } from 'components/WeatherIcon';
 import { capitalizeFirstLetter } from 'utils/stringFunctions';
 import { getSign } from 'utils/temperatureSign';
 
-import { atmToPas, pasToMM } from './constants';
+import { ATM_TO_PAS, PAS_TO_MM } from './constants';
 import { ICurrentWeatherProps } from './types';
 
 import styles from './CurrentWeather.module.scss';
@@ -23,7 +23,7 @@ export const CurrentWeather: React.FC<ICurrentWeatherProps> = ({ current }) => {
         [current.main.feels_like],
     );
     const description = useMemo(() => capitalizeFirstLetter(current.weather[0].description), [current.weather]);
-    const pressure = useMemo(() => Math.floor((current.main.pressure / atmToPas) * pasToMM), [current.main.pressure]);
+    const pressure = useMemo(() => Math.floor((current.main.pressure / ATM_TO_PAS) * PAS_TO_MM), [current.main.pressure]);
 
     return (
         <div className={cx('weather-block')}>
