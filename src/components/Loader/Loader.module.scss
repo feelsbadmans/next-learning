@@ -1,0 +1,45 @@
+.loader {
+    width: 40%;
+    height: 80%;
+  
+    position: relative;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    padding: 44px;
+  
+    border-radius: 16px;
+  
+    @media screen and (max-width: 1440px) {
+        width: 50%;
+    }
+  
+    @media screen and (max-width: 1024px) {
+        width: 60%;
+        padding: 36px;
+    }
+  
+    @media screen and (max-width: 768px) {
+        width: 80%;
+    }
+  
+    background: linear-gradient(
+        rgba(255, 179, 198, 0.9), 
+        rgba(255, 180, 249, 0.8), 
+        rgba(190, 200, 255, 0.8), 
+        rgba(174, 227, 228, 0.75), 
+        rgba(223, 255, 211, 0.7),
+        rgba(255, 211, 191, 0.8),  
+        rgba(255, 179, 198, 0.9), 
+    );
+    background-position: 0 0;
+    animation: background 1s infinite alternate;
+  }
+  
+  @keyframes background {
+    100% {
+        background-position: 0px 100px;
+    }
+  }

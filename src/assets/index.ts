@@ -1,0 +1,11 @@
+export { ReactComponent as Home } from './icons/home.svg';
+export { ReactComponent as Clouds } from './icons/wi-cloud.svg';
+export { ReactComponent as MoreClouds } from './icons/wi-cloudy.svg';
+export { ReactComponent as FewClouds } from './icons/wi-day-cloudy.svg';
+export { ReactComponent as Sunny } from './icons/wi-day-sunny.svg';
+export { ReactComponent as Fog } from './icons/wi-fog.svg';
+export { ReactComponent as Rain } from './icons/wi-rain.svg';
+export { ReactComponent as MoreRain } from './icons/wi-showers.svg';
+export { ReactComponent as Snow } from './icons/wi-snow.svg';
+export { ReactComponent as Thunderstorm } from './icons/wi-thunderstorm.svg';
+export { default as background } from './images/background.jpg';
