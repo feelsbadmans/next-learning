@@ -1,1 +1,1 @@
-export const getSign = (temp: number): string => (temp > 0 ? '+' : temp < 0 ? '-' : '');
+export const getSign = (temp: number): string => temp > 0 ? '+' : '';
